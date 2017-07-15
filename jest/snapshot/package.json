@@ -11,7 +11,8 @@
     "regenerator-runtime": "*"
   },
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "update-snapshot": "jest --updateSnapshot"
   },
   "jest": {
     "testEnvironment": "node"

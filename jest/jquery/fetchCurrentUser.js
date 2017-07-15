@@ -1,20 +1,20 @@
 // Copyright 2004-present Facebook. All Rights Reserved.
 
-const $ = require('jquery');
+const $ = require('jquery')
 
-function parseJSON(user) {
+function parseJSON (user) {
   return {
     fullName: user.firstName + ' ' + user.lastName,
-    loggedIn: true,
-  };
+    loggedIn: true
+  }
 }
 
-function fetchCurrentUser(callback) {
+function fetchCurrentUser (callback) {
   return $.ajax({
     success: user => callback(parseJSON(user)),
     type: 'GET',
-    url: 'http://example.com/currentUser',
-  });
+    url: 'http://example.com/currentUser'
+  })
 }
 
-module.exports = fetchCurrentUser;
+module.exports = fetchCurrentUser

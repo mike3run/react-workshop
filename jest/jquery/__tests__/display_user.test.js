@@ -1,10 +1,10 @@
 // Copyright 2004-present Facebook. All Rights Reserved.
 
-/* global document */
+/* global document, jest, it, expect */
 
-'use strict';
+'use strict'
 
-jest.mock('../fetchCurrentUser.js');
+jest.mock('../fetchCurrentUser.js')
 
 it('displays a user after a click', () => {
   // Set up our document body
@@ -12,28 +12,28 @@ it('displays a user after a click', () => {
     '<div>' +
     '  <span id="username" />' +
     '  <button id="button" />' +
-    '</div>';
+    '</div>'
 
   // This module has a side-effect
-  require('../displayUser');
+  require('../displayUser')
 
-  const $ = require('jquery');
-  const fetchCurrentUser = require('../fetchCurrentUser');
+  const $ = require('jquery')
+  const fetchCurrentUser = require('../fetchCurrentUser')
 
   // Tell the fetchCurrentUser mock function to automatically invoke
   // its callback with some data
   fetchCurrentUser.mockImplementation(cb => {
     cb({
       fullName: 'Johnny Cash',
-      loggedIn: true,
-    });
-  });
+      loggedIn: true
+    })
+  })
 
   // Use jquery to emulate a click on our button
-  $('#button').click();
+  $('#button').click()
 
   // Assert that the fetchCurrentUser function was called, and that the
   // #username span's inner text was updated as we'd expect it to.
-  expect(fetchCurrentUser).toBeCalled();
-  expect($('#username').text()).toEqual('Johnny Cash - Logged In');
-});
+  expect(fetchCurrentUser).toBeCalled()
+  expect($('#username').text()).toEqual('Johnny Cash - Logged In')
+})
